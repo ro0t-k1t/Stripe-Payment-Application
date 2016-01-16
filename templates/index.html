@@ -1,0 +1,30 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+    {% if user.is_authenticated %}
+    <h3>You are logged in as {{ user.email }} </h3>
+    {% endif %}
+
+
+
+    <div class="jumbotron">
+
+        <h1>Strip payment application</h1>
+        <p class="lead"> </p>
+        <a class="btn btn-large btn-success" href="contact"> </a><br/>
+    </div>
+
+    <hr>
+
+    <form method="POST" action="/sendmail/">
+        {% csrf_token %}
+    <label>Message</label>
+    <input type="text" name="textfield">
+    <label>Address</label>
+    <input type="text" name="address">
+
+    <button type="submit">Send Mail</button>
+    </form>
+
+{%  endblock %}

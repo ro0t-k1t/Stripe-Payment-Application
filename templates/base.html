@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>We Are Social</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+    {%  block head_js %}{% endblock %}
+</head>
+<body>
+<div class="container-narrow">
+    <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+            <li><a href="/">Home</a></li>
+            <li><a href="/pages/about">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact </a></li>
+            <li><a href="{% url 'register' %}">Register </a></li>
+            <li><a href="{% url 'login' %}">Login </a></li>
+            <li><a href="{% url 'logout' %}"> Logout </a></li>
+        </ul>
+        <h3><span class="fui-settings-16 muted">Stripe Payment Application</span></h3>
+    </div>
+    {% if messages %}
+        <div class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    <hr>
+
+    <div class="container-narrow">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <hr>
+    <div class="footer">
+        <p>Copyright © 2015 <a href="www.google.ie"></a>. Made By Ronan Higgins and Django </p>
+    </div>
+</div>
+
+</body>
+</html>
